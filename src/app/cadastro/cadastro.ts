@@ -6,9 +6,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {Cliente }from './cliente'
-import { ClientRequest } from 'http';
-import { log } from 'console';
+import { Cliente }from './cliente'
+import { ClienteService } from '../cliente.service'
+
 
 @Component({
   selector: 'app-cadastro',
@@ -26,10 +26,13 @@ import { log } from 'console';
 })
 export class Cadastro {
   cliente: Cliente = Cliente.newCliente();
+  
 
+  constructor(private service: ClienteService){
+
+  }
   salvar(){
-    console.log("Dados Clientes", this.cliente);
+    this.service.salvar(this.cliente);
     
   }
-    
 }
